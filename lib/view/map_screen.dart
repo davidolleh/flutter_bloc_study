@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart' as latLng;
+import 'package:geocoding/geocoding.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -12,14 +12,16 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   latLng.LatLng point = latLng.LatLng(49.5, -0.09);
-
+  var location = [];
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         FlutterMap(
           options: MapOptions(
-            onTap: (tapPosition ,latLng.LatLng p) {// 누른곳 핀 찍기
+            onTap: (tapPosition, latLng.LatLng p) async {
+              location = await Geocoder.
+              // 누른곳 핀 찍기
               setState(() {
                 point = p;
               });
@@ -55,8 +57,20 @@ class _MapScreenState extends State<MapScreen> {
           padding: const EdgeInsets.symmetric(vertical: 34.0, horizontal: 16.0),
           child: Column(
             children: const [
-              Card(la
-                child: TextField(),
+              Card(
+                child: TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.location_on_outlined),
+                    hintText: "Search for Location",
+                    contentPadding: EdgeInsets.all(16.0),
+                  ),
+                ),
+              ),
+              Card(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text("", style: TextStyle(fontWeight: FontWeight.bold),),
+                ),
               )
             ],
           ),
