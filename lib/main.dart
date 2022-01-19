@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_study/view/map_screen.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'view/counter_page.dart';
 import 'view/counter.dart';
 
@@ -9,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'BLoC study',
-      home: CounterPage(),//import alt + enter
+      home: MapScreen(),//import alt + enter
     );
   }
 }
