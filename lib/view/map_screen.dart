@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart' as latLng;
-import 'package:geocoding/geocoding.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // MapboxMap(initialCameraPosition: initialCameraPosition)
         FlutterMap(
           options: MapOptions(
             onTap: (tapPosition, latLng.LatLng p) async {
