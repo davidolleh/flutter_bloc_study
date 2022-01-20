@@ -20,8 +20,6 @@ class _MapScreenState extends State<MapScreen> {
         FlutterMap(
           options: MapOptions(
             onTap: (tapPosition, latLng.LatLng p) async {
-              location = await Geocoder.
-              // 누른곳 핀 찍기
               setState(() {
                 point = p;
               });
@@ -31,7 +29,7 @@ class _MapScreenState extends State<MapScreen> {
             zoom: 13.0,
           ),
           layers: [
-            TileLayerOptions(
+            TileLayerOptions(//지도를 입력하는것
               //타일 즉 지도를 까는 것
               urlTemplate:
                   "https://api.mapbox.com/styles/v1/davidolleh/ckyl278p7599014q8z2xvbmet/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZGF2aWRvbGxlaCIsImEiOiJja3lsMGR5azQwb21tMm9wa2c2Ym1naG1mIn0.mswCBWNxgfEPXY7EW3dbpA",
@@ -41,7 +39,7 @@ class _MapScreenState extends State<MapScreen> {
                 'id': 'mapbox.mapbox-streets-v8' //id tell 어떤 데이터를 보여줄지 알려줄 것이다
               },
             ),
-            MarkerLayerOptions(markers: [
+            MarkerLayerOptions(markers: [//여기는 말그래도 점을 찍어주는 것
               Marker(
                   width: 100.0,
                   height: 100.0,

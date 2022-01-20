@@ -25,6 +25,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 31
 
@@ -48,6 +52,8 @@ android {
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        buildConfigField("String", "CONSUMER_KEY", apikeyProperties['CONSUMER_KEY'])
+        buildConfigField("String", "CONSUMER_SECRET", apikeyProperties['CONSUMER_SECRET'])
     }
 
     buildTypes {
